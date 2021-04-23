@@ -10,5 +10,6 @@
 
 module.exports.routes = {
 
+    'GET /api/v1/status': { controller: 'ApiController', action: 'status'}
 
 };
