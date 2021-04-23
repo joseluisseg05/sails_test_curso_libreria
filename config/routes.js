@@ -17,5 +17,6 @@ module.exports.routes = {
     'PUT /api/v1/personal': { controller: 'PersonalController', action: 'update'},
     'POST /api/v1/personal/find': { controller: 'PersonalController', action: 'find'},
     'GET /api/v1/personal/pagination': { controller: 'PersonalController', action: 'pagination'},
-
+    'DELETE /api/v1/personal/deactivate/:id_personal': { controller: 'PersonalController', action: 'deactivate' },
+    'PUT /api/v1/personal/activate/:id_personal': { controller: 'PersonalController', action: 'activate' },
 };

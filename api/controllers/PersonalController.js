@@ -72,5 +72,36 @@ module.exports = {
         return res.status(400).send(response);//quitar status??
     })
   },
+  deactivate: async (req, res) => {
+    const id_personal = req.params.id_personal;
+    Personal.Deactivate(id_personal)
+    .then( data => {
+        const response = Response.successResponse();
+        response.data = data;
+        return res.send(response);
+    })
+    .catch( error => {
+        const response = Response.errorResponse();
+        response.error.message = error.message;
+        response.error.code = 400;
+        return res.status(400).send(response);//quitar status??
+    })
+},
+
+activate: async (req, res) => {
+    const id_personal = req.params.id_personal;
+    Personal.Activate(id_personal)
+    .then( data => {
+        const response = Response.successResponse();
+        response.data = data;
+        return res.send(response);
+    })
+    .catch( error => {
+        const response = Response.errorResponse();
+        response.error.message = error.message;
+        response.error.code = 400;
+        return res.status(400).send(response);//quitar status??
+    })
+},
 };
 

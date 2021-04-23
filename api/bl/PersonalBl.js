@@ -87,5 +87,25 @@ module.exports = {
             }
         });
     },
+
+    Activate: (id) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve( await PersonalRepository.Activate(id) );
+            } catch (error) {
+                reject(error)
+            }
+        });
+    },
+    
+    Deactivate: (id) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve( await PersonalRepository.Deactivate(id) )
+            } catch (error) {
+                reject(error)
+            }
+        });
+    },
 }
 
