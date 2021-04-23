@@ -4,6 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
+const bcryptjs = require('bcryptjs');
 
  module.exports = {
   datastore: 'mongo', 
@@ -27,6 +28,20 @@
       type: 'string',
       required: true,
     },
+    token:{
+      type: 'string'
+    },
+    expira: {
+      type: 'string'
+    }
   },
 
+  customToJSON: function () {
+    return _.omit(this, ['password', 'createdAt', 'updatedAt']);
+  },
+
+  beforeCreate: async(personal, next)=> {
+    personal.password = await bcryptjs.hashSync(personal.password, bcryptjs.genSaltSync(12));
+    next()
+  }
 };

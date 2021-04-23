@@ -6,10 +6,16 @@
   "keywords": [],
   "dependencies": {
     "@sailshq/lodash": "^3.10.3",
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
     "sails": "^1.4.2",
+    "sails-hook-email": "^0.12.1",
     "sails-hook-orm": "^3.0.2",
     "sails-hook-sockets": "^2.0.0",
-    "sails-mongo": "^1.2.0"
+    "sails-mongo": "^1.2.0",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "eslint": "5.16.0",
