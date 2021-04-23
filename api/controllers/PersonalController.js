@@ -12,7 +12,7 @@ const Personal = require('../bl/PersonalBl');
 module.exports = {
   create: async(req, res) => {
     const personal = req.body.personal;
-    Personal.Create(personal)
+    Personal.Create(personal, req)
     .then( data => {
         const response = Response.successResponse();
         response.data = data;
@@ -24,6 +24,21 @@ module.exports = {
         response.error.code = 400;
         return res.status(400).send(response)
     })
-  }
+  },
+  update: async (req, res) => {
+    const personal = req.body.personal;
+    Personal.Update(personal)
+    .then( data => {
+        const response = Response.successResponse();
+        response.data = data;
+        return res.status(200).send(response);
+    })
+    .catch( error => {
+        var response = Response.errorResponse();
+        response.error.message = error.message;
+        response.error.code = 400;
+        return res.status(400).send(response);
+    })
+  },
 };
 
