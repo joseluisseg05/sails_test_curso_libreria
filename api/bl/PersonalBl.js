@@ -64,5 +64,28 @@ module.exports = {
             }
         });
     },
+    Find: (filter) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                if(filter.id > 0){
+                    resolve( await PersonalRepository.FindById(filter.id) );
+                } else {
+                    resolve( await PersonalRepository.FindByFilter(filter) );
+                }
+            } catch (error) {
+                reject(error)
+            }
+        });
+    },
+
+    Pagination: (limit, skip) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve( await PersonalRepository.Pagination(limit, skip) );
+            } catch (error) {
+                reject(error)
+            }
+        });
+    },
 }
 

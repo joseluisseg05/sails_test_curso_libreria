@@ -14,6 +14,8 @@ module.exports.routes = {
 
     /****PERSONAL****/
     'POST /api/v1/personal': { controller: 'PersonalController', action: 'create'},
-    'PUT /api/v1/personal': { controller: 'PersonalController', action: 'update'}
+    'PUT /api/v1/personal': { controller: 'PersonalController', action: 'update'},
+    'POST /api/v1/personal/find': { controller: 'PersonalController', action: 'find'},
+    'GET /api/v1/personal/pagination': { controller: 'PersonalController', action: 'pagination'},
 
 };
