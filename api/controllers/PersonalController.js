@@ -20,7 +20,7 @@ module.exports = {
     }) 
     .catch( error => {
         const response = Response.errorResponse();
-        response.error.message = error;
+        response.error.message = error.message;
         response.error.code = 400;
         return res.status(400).send(response)
     })

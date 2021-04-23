@@ -26,7 +26,7 @@ module.exports = {
     FindByEmail: (email) => {
         return new Promise(async (resolve, reject) => {
             try {
-                resolve(await Personal.findOne(email))
+                resolve(await Personal.findOne({email}))
             } catch (error) {
                 reject(error)
             }
