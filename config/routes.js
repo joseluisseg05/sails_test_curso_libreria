@@ -10,6 +10,9 @@
 
 module.exports.routes = {
 
-    'GET /api/v1/status': { controller: 'ApiController', action: 'status'}
+    'GET /api/v1/status': { controller: 'ApiController', action: 'status'},
+
+    /****PERSONAL****/
+    'POST /api/v1/personal': { controller: 'PersonalController', action: 'create'},
 
 };

@@ -52,6 +52,10 @@ module.exports.datastores = {
     // url: 'mysql://user:password@host:port/database',
 
   },
+  mongo: {
+    adapter: 'sails-mongo',
+    url: 'mongodb://localhost/api_libreria'
+  }
 
 
 };
