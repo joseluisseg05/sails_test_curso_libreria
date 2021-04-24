@@ -28,10 +28,6 @@ const bcryptjs = require('bcryptjs');
       type: 'string',
       required: true,
     },
-    isActivate: {
-      type: 'boolean', 
-      defaultsTo: false
-    },
     token:{
       type: 'string'
     },

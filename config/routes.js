@@ -22,4 +22,12 @@ module.exports.routes = {
     'GET /api/v1/personal/pagination': { controller: 'PersonalController', action: 'pagination'},
     'DELETE /api/v1/personal/deactivate/:id_personal': { controller: 'PersonalController', action: 'deactivate' },
     'PUT /api/v1/personal/activate/:id_personal': { controller: 'PersonalController', action: 'activate' },
+
+    /****LIBROS****/
+    'POST /api/v1/libro/create': { controller: 'LibrosController', action: 'create'},
+    'PUT /api/v1/libro/update': { controller: 'LibrosController', action: 'update'},
+    'POST /api/v1/libro/find': { controller: 'LibrosController', action: 'find'},
+    'GET /api/v1/libro/pagination': { controller: 'LibrosController', action: 'pagination'},
+    'DELETE /api/v1/libro/deactivate/:id_libro': { controller: 'LibrosController', action: 'deactivate' },
+    'PUT /api/v1/libro/activate/:id_libro': { controller: 'LibrosController', action: 'activate' },
 };
