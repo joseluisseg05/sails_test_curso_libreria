@@ -17,6 +17,12 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': ['isAuthorized'],
+
+  'PersonalController': {
+    'login': true,
+    'create': true,
+    'confirmar': true
+  }
 
 };
