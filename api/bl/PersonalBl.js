@@ -6,9 +6,53 @@ const crypto = require('crypto');
 const bcryptjs = require('bcryptjs');
 
 const PersonalRepository = require('../repositories/PersonalRepository');
+const JwtGenerate = require('../common/Jwtoken');
 const Mailer = require('../services/MailerService');
 
 module.exports = {
+    Login: (personal) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const personal_stored = await PersonalRepository.FindByEmail({email: personal.email})
+                
+                if(!personal_stored.isActivate){
+                    throw new Error('La cuenta a la que intenta acceder no esta activa.');
+                }else if (!personal_stored) {
+                    throw new Error('Favor de verificar sus datos, socio no encontrado');
+                }
+
+                const token = JwtGenerate.issue({id: personal_stored.id});
+                personal_stored.token = token;
+
+                if(bcryptjs.compareSync(personal.password, personal_stored.password)) {
+                    resolve(personal_stored);
+                } else { 
+                    throw new Error('Contraseña incorrecta');
+                }
+            } catch (error) {
+                reject(error)
+            }
+        });
+    },
+    Confirmar: (req) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const personal = await PersonalRepository.FindByToken(req.params.token, Date.now());
+                if(!personal){
+                    throw new Error('Error limite de tiempo superado o Link deñado')
+                }
+                personal.isActivate = true;
+                personal.token = '';
+                personal.expira = ''
+                
+                const data = await PersonalRepository.Save(personal);
+                resolve(data)
+            } catch (error) {
+                reject(error)
+            }
+        });
+    },
+
     Create: (personal, req) => {
         return new Promise(async (resolve, reject) => {
             try {
@@ -20,8 +64,8 @@ module.exports = {
                     email: validator.trim(validator.normalizeEmail(email)),
                     password,
                     //datos para email de confirmacion
-                    //token: crypto.randomBytes(30).toString('hex'),
-                    //expira: Date.now() + 1800000 //fecha exacta mas 30min
+                    token: crypto.randomBytes(30).toString('hex'),
+                    expira: Date.now() + 1800000 //fecha exacta mas 30min
                 }
                 
                 const personal_stored = await PersonalRepository.FindByEmail(newPersonal.email);
@@ -31,7 +75,7 @@ module.exports = {
                 const sendEmail = {
                     nombre: newPersonal.nombre,
                     email: newPersonal.email,
-                    //url: `http://${req.headers.host}/v1/socio/confirm-account/${newPersonal.token}`
+                    url: `http://${req.headers.host}/api/v1/personal/confirm-account/${newPersonal.token}`
                 }
                 console.log(sendEmail);
                 //await Mailer.SendSignUpEmail(sendEmail); //send email ok

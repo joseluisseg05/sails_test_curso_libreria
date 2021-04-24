@@ -10,6 +10,37 @@ var Response = new Response();
 const Personal = require('../bl/PersonalBl');
 
 module.exports = {
+    login: async (req, res) => {
+        const personal = req.body.personal;
+        Personal.Login(personal)
+        .then( data => {
+            const response = Response.successResponse();
+            response.data = data;
+            return res.send(response);
+        })
+        .catch( error => {
+            const response = Response.errorResponse();
+            response.error.message = error.message;
+            response.error.code = 400;
+            return res.status(400).send(response);//quitar status??
+        })
+    },
+
+    confirmar: async (req, res) => {
+        Personal.Confirmar(req)
+        .then( data => {
+            const response = Response.successResponse();
+            response.data = data;
+            return res.send(response);
+        })
+        .catch( error => {
+            const response = Response.errorResponse();
+            response.error.message = error.message;
+            response.error.code = 400;
+            return res.status(400).send(response);//quitar status??
+        })
+    },
+
   create: async(req, res) => {
     const personal = req.body.personal;
     Personal.Create(personal, req)

@@ -30,7 +30,7 @@ const bcryptjs = require('bcryptjs');
     },
     isActivate: {
       type: 'boolean', 
-      defaultsTo: true
+      defaultsTo: false
     },
     token:{
       type: 'string'

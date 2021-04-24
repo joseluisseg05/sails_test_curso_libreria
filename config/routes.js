@@ -13,6 +13,9 @@ module.exports.routes = {
     'GET /api/v1/status': { controller: 'ApiController', action: 'status'},
 
     /****PERSONAL****/
+    'POST /api/v1/personal/login': { controller: 'PersonalController', action: 'login'},
+    'POST /api/v1/personal/confirm-account/:token': { controller: 'PersonalController', action: 'confirmar' },
+
     'POST /api/v1/personal': { controller: 'PersonalController', action: 'create'},
     'PUT /api/v1/personal': { controller: 'PersonalController', action: 'update'},
     'POST /api/v1/personal/find': { controller: 'PersonalController', action: 'find'},
