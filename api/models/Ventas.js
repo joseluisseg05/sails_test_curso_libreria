@@ -10,10 +10,6 @@ module.exports = {
   tableName: 'Ventas',
 
   attributes: {
-    personal: {
-      type: 'string',
-      required: true
-    },
     cliente: {
       type: 'json',
       required: true
