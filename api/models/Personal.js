@@ -4,6 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
+ //https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many
 const bcryptjs = require('bcryptjs');
 
  module.exports = {
@@ -33,6 +34,14 @@ const bcryptjs = require('bcryptjs');
     },
     expira: {
       type: 'string'
+    },
+    isActivate: { 
+      type: 'boolean', 
+      defaultsTo: false
+    },
+    ventas: {//atributo que sirve como llave 
+      collection: 'ventas',// que coleccion voy a referenciar
+      via: 'personal'//que campo de la coleccion voy a crear la relacion
     }
   },
 

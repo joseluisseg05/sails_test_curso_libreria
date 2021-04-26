@@ -53,7 +53,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  migrate: 'alter',
+  migrate: 'drop',
 
 
   /***************************************************************************
@@ -72,8 +72,6 @@ module.exports.models = {
     createdAt: { type: 'number', autoCreatedAt: true, },
     updatedAt: { type: 'number', autoUpdatedAt: true, },
     id: { type: 'string', columnName: '_id' },
-    isActivate: { type: 'boolean', defaultsTo: false},
-    createBy: {type: 'string', defaultsTo: 'UserSystem'}//
     //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:

@@ -1,5 +1,5 @@
 /**
- * Libros.js
+ * Ventas.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -7,33 +7,32 @@
 
 module.exports = {
   datastore: 'mongo',
-  tableName: 'Libros',
+  tableName: 'Ventas',
 
   attributes: {
-    titulo: {
+    personal: {
       type: 'string',
       required: true
     },
-    autor: {
+    cliente: {
+      type: 'json',
+      required: true
+    },
+    items: {
+      type: 'json',
+      columnType: 'array'
+    },
+    fecha:{
       type: 'string',
       required: true
     },
-    anio: {
+    costo_total: {
       type: 'number',
       required: true
     },
-    editorial: {
-      type: 'string',
-      required: true
-    },
-    precio: {
-      type: 'number',
-      required: true
-    },
-    isActivate: { 
-      type: 'boolean', 
-      defaultsTo: true
-    },
+    personal: {// campo con el que se va a realizar la realacion  
+      model: 'personal'// modelo que estoy tomando
+    }
   },
 
 };

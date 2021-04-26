@@ -67,7 +67,7 @@ module.exports = {
                     where: {isActivate: true},
                     limit,
                     skip
-                }) );
+                }).populate('ventas') );
             } catch (error) {
                 reject(erro)
             }
