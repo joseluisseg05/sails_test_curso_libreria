@@ -26,23 +26,6 @@ module.exports = {
         });
     },
  
-    update: async (req, res) => {
-        const user = req.user;
-        const venta = req.body.venta;
-        Ventas.Update(venta, user)
-        .then((data) => {
-            const response = Response.successResponse();
-            response.data = data;
-            return res.status(200).send(response);
-        })
-        .catch((error) => {
-            const response = Response.errorResponse();
-            response.error.message = error.message;
-            response.error.code = 400;
-            return res.status(400).send(response);
-        });
-    },
- 
     find: async (req, res) => {
         const filter = req.body.filter;
         Ventas.Find(filter)

@@ -3,11 +3,7 @@ module.exports = {
     Save: (venta) => {
         return new Promise(async (resolve, reject) => {
             try {
-                if(venta.id){
-                    resolve( await Ventas.updateOne({id: venta.id}).set(venta));
-                } else {
-                    resolve( await Ventas.create(venta).fetch() );
-                }
+                resolve( await Ventas.create(venta).fetch() );
             } catch (error) {
                 reject(error)
             }
@@ -16,7 +12,7 @@ module.exports = {
     FindById: (id) => {
         return new Promise(async (resolve, reject) => {
             try {
-                resolve( await Ventas.findOne({id}))
+                resolve( await Ventas.findOne({id}).populate('personal') )
             } catch (error) {
                 reject(error)
             }
@@ -26,7 +22,7 @@ module.exports = {
     FindByFilter: (filter) => {
         return new Promise(async (resolve, reject) => {
             try {
-                resolve( await Ventas.find(filter) );
+                resolve( await Ventas.find(filter).populate('personal') );
             } catch (error) {
                 reject(erro)
             }

@@ -33,7 +33,6 @@ module.exports.routes = {
 
     /****VENTAS****/
     'POST /api/v1/venta/create': { controller: 'VentasController', action: 'create'},
-    'PUT /api/v1/venta/update': { controller: 'VentasController', action: 'update'},
     'POST /api/v1/venta/find': { controller: 'VentasController', action: 'find'},
     'GET /api/v1/venta/pagination': { controller: 'VentasController', action: 'pagination'},
 };
