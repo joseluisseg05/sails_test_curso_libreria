@@ -6,13 +6,26 @@ const crypto = require('crypto');
 const bcryptjs = require('bcryptjs');
 
 const PersonalRepository = require('../repositories/PersonalRepository');
-const JwtGenerate = require('../common/Jwtoken');
+const JwtGenerate = require('../services/JwToken');
 const Mailer = require('../services/MailerService');
+const validateData = require('../services/validateData');
 
 module.exports = {
     Login: (personal) => {
         return new Promise(async (resolve, reject) => {
             try {
+                const validator = validateData.validateLogin(personal)
+                //console.log(validator);
+                //todo ok: retorna solo true, validar err: retorna un objeto 
+                if (typeof validator == "object") {
+                    let data = "";
+                    //iterar sobre cada propiedad del objeto 
+                    Object.keys(validator).forEach(msg => {
+                        data = data + " " + validator[msg];
+                    })
+                    throw new Error(data);
+                }
+
                 const personal_stored = await PersonalRepository.FindByEmail({email: personal.email})
                 
                 if(!personal_stored.isActivate){

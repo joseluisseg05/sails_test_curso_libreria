@@ -1,4 +1,4 @@
-const Jwtoken = require('../common/Jwtoken.js');
+const Jwtoken = require('../services/JwToken.js');
 
 var Response = require('../common/Response.js');
 var Response = new Response();

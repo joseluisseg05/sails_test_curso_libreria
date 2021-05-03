@@ -9,6 +9,7 @@
     "bcryptjs": "^2.4.3",
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
+    "fastest-validator": "^1.10.1",
     "jsonwebtoken": "^8.5.1",
     "sails": "^1.4.2",
     "sails-hook-email": "^0.12.1",
