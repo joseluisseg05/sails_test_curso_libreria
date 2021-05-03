@@ -35,7 +35,9 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  // schema: true,
+  //schema: true, 
+  //solo se almacenan las propiedades que estan en los modelos, si no se mandan
+  //los marca como vacios
 
 
   /***************************************************************************
