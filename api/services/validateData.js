@@ -14,7 +14,11 @@ module.exports = {
 
         const schema = {
             email: { type: "email", empty: false },
-            password: { type: "string", empty: false }
+            password: { type: "string", empty: false, 
+                messages: { //personalizar los mensajes segun su tipo
+                    required: "El password es un Campo requirido para la operacion"
+                }
+            }
         }
 
         const result = v.validate(
