@@ -23,6 +23,10 @@ module.exports.policies = {
     'login': true,
     'create': true,
     'confirmar': true
-  }
+  },
+
+  'ApiController': {
+    'status': true,
+  },
 
 };
