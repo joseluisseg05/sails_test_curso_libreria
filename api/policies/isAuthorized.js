@@ -23,13 +23,13 @@ module.exports = async (req, res, next) => {
                 var response = Response.errorResponse();
                 response.error.message = 'El fotmato debe ser Authorization: Bearer [token]';
                 response.error.code = 400;
-                return res.send(response);
+                return res.status(400).send(response);
             }
         } else {
             var response = Response.errorResponse();
             response.error.message = 'El fotmato debe ser Authorization: Bearer [token]';
             response.error.code = 400;
-            return res.send(response);
+            return res.status(400).send(response);
         }
         /*
         //Estructura para el token solo sin el bearer
@@ -45,7 +45,7 @@ module.exports = async (req, res, next) => {
         var response = Response.errorResponse();
         response.error.message = 'La cabezera Authorization no ha sido encontrada';
         response.error.code = 400;
-        return res.send(response);
+        return res.status(400).send(response);
     }
     
     Jwtoken.verify(token, async function(error, decoded){
@@ -54,7 +54,7 @@ module.exports = async (req, res, next) => {
             var response = Response.errorResponse();
             response.error.message = 'Token no valido - error en jwt';
             response.error.code = 401;
-            return res.send(response);
+            return res.status(401).send(response);
         } else {
             const { id } = decoded;
             const personal = await PersonalRepository.FindById(id);    
@@ -63,16 +63,15 @@ module.exports = async (req, res, next) => {
                 var response = Response.errorResponse();
                 response.error.message = 'Token no valido - personal no existe';
                 response.error.code = 401;
-                return res.send(response);
+                return res.status(401).send(response);
             }
             
             if ( !personal.isActivate){
                 var response = Response.errorResponse();
                 response.error.message = 'Token no valido - personal desactivado';
                 response.error.code = 401;
-                return res.send(response);
+                return res.status(401).send(response);
             }
-
             //req.user = personal; //poner toda la data 
             req.user = personal.id;//solo el id*/
         }

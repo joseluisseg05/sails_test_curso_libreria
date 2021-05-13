@@ -73,6 +73,10 @@ module.exports = {
       // ssl: true,
 
     },
+    mongo: {
+      adapter: 'sails-mongo',
+      url: 'mongodb://User_Node:seg112358@cluster0-shard-00-00.ql7gt.mongodb.net:27017,cluster0-shard-00-01.ql7gt.mongodb.net:27017,cluster0-shard-00-02.ql7gt.mongodb.net:27017/Sails?ssl=true&replicaSet=atlas-kx4dl3-shard-0&authSource=admin&retryWrites=true&w=majority'
+    }
 
   },
 
@@ -148,9 +152,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allRoutes: true,
+      allowOrigins: '*'
     },
 
   },
@@ -376,7 +379,7 @@ module.exports = {
   custom: {
     baseUrl: 'https://example.com',
     internalEmailAddress: 'support@example.com',
-
+    token_secret: process.env.SECRETTOKEN
     // sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU',
     // stripeSecret: 'sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm',
     //--------------------------------------------------------------------------
