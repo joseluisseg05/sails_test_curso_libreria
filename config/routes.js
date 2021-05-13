@@ -9,6 +9,13 @@
  */
 
 module.exports.routes = {
+    '/': {
+        fn: (req, res)=> {
+            res.send({
+                message: 'API'
+            })
+        }
+    },
 
     'GET /api/v1/status': { controller: 'ApiController', action: 'status'},
 
