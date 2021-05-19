@@ -10,6 +10,7 @@
 
 module.exports.custom = {
 
+  baseUrl: 'http://18.224.181.221:1337',
   /***************************************************************************
   *                                                                          *
   * Any other custom config this Sails app should use during development.    *
