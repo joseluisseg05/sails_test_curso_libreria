@@ -76,7 +76,7 @@ module.exports = {
     mongo: {
       adapter: 'sails-mongo',
       //url: 'mongodb://ea55f6c7ccd55f6741c2f7b0c8d97813:seg112358@12a.mongo.evennode.com:27018/ea55f6c7ccd55f6741c2f7b0c8d97813'
-      url: 'mongodb://User_Node:<password>@cluster0-shard-00-00.ql7gt.mongodb.net:27017,cluster0-shard-00-01.ql7gt.mongodb.net:27017,cluster0-shard-00-02.ql7gt.mongodb.net:27017/Sails?ssl=true&replicaSet=atlas-kx4dl3-shard-0&authSource=admin&retryWrites=true&w=majority'
+      url: 'mongodb://User_Node:seg112358@cluster0-shard-00-00.ql7gt.mongodb.net:27017,cluster0-shard-00-01.ql7gt.mongodb.net:27017,cluster0-shard-00-02.ql7gt.mongodb.net:27017/Sails?ssl=true&replicaSet=atlas-kx4dl3-shard-0&authSource=admin&retryWrites=true&w=majority'
     }
 
   },
